@@ -1,5 +1,3 @@
-
-
 const offset = 0;
 const limit = 10;
 const url = `https://pokeapi.co/api/v2/pokemon/?offset=${offset}&limit=${limit}`;
@@ -26,19 +24,24 @@ function convertPokemonToHtml(pokemon) {
         `;
 }
 
-var pokemonLi = document.getElementById('pokemonLi')
-pokeApi.getPokemons().then((pokemonList) => {
+var pokemonLi = document.getElementById("pokemonLi");
+
+pokeApi.getPokemons().then((pokemonList = []) => {
+ pokemonLi.innerHTML += pokemonList.map(convertPokemonToHtml).join('')
+});
+
+
+
+/* 
+  const newList = pokemonList.map((pokemon) => {
+    return pokemon.name;
+  });console.log(newList);
+-----
 const listItems = []
-          pokemonList.map()
 
   for (let i = 0; i < pokemonList.length; i++) {
-    
-      const pokemon = pokemonList[i];
-     
-    pokemonLi.innerHTML += convertPokemonToHtml(pokemon) 
-       
+    const pokemon = pokemonList[i];
 
-    
+    pokemonLi.innerHTML += convertPokemonToHtml(pokemon);
   }
-})
-
+}); */

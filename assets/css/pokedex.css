@@ -20,7 +20,7 @@
     background-color: #48d0b0;
     border-radius: 1rem;
     color: #fff;
-    font-weight: 700;
+    font-weight: 600;
     height: auto;
   }
   
@@ -32,8 +32,13 @@
   .pokemon .name {
     font-size: 1.5 rem;
   }
+  .name::first-letter{
+    text-transform: uppercase;
+  }
   .pokemon .number {
     text-align: right;
+    font-weight: 400;
+    color: #04433d;
   }
   .pokemon img {
     max-width: 100%;
