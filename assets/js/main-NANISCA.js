@@ -2,39 +2,35 @@ const offset = 0;
 const limit = 10;
 const url = `https://pokeapi.co/api/v2/pokemon/?offset=${offset}&limit=${limit}`;
 
-function convertTypesToList(pokeType) {
-  return pokeType.types.map((x) => `<li class='type'> ${x.type.name} </li>`);
-}
-
 function convertPokemonToHtml(pokemon) {
   return `       
      <li class="pokemon">
           <div class="head">
             <span class="name">${pokemon.name}</span>
-            <span class="number">#${pokemon.order}</span>
+            <span class="number">${pokemon.id}</span>
           </div>
           <div class="detail">
             <ol class="types">
-
-             ${convertTypesToList(pokemon).join("")}
-             
+              <li class="type">grass</li>
+              <li class="type">poison</li>
             </ol>
 
             <img
-              src="${pokemon.sprites.other.dream_world.front_default}"
+              src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg"
               alt="${pokemon.name}"
             />
           </div>
         </li>
-   
         `;
 }
 
 var pokemonLi = document.getElementById("pokemonLi");
 
 pokeApi.getPokemons().then((pokemonList = []) => {
-  pokemonLi.innerHTML = pokemonList.map(convertPokemonToHtml).join("");
+ pokemonLi.innerHTML += pokemonList.map(convertPokemonToHtml).join('')
 });
+
+
 
 /* 
   const newList = pokemonList.map((pokemon) => {
