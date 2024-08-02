@@ -1,11 +1,12 @@
 * {
   font-family: "Poppins", sans-serif;
   box-sizing: border-box;
- 
 }
-body{
+
+body {
     background-color: #f5f7f9;
 }
+
 h1 {
   color: #dc0a2d;
 }
@@ -16,3 +17,22 @@ h1 {
   max-width: 360px;
 }
 
+button {
+  all:unset;
+  margin: 4rem auto;
+  display: flex;
+  padding: 1rem;
+  width: 100%;
+  max-width: 20rem;
+  justify-content: center;
+  font-weight: 600;
+  border-radius: 1rem;
+  color: #fff;
+  background-color: #dc0a2d;
+  border: 1px solid #ccc;
+}
+
+button:hover {
+  transition: all;
+  background-color: #df445e;
+}
