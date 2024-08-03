@@ -1,5 +1,10 @@
-
-
+//${pokemon.types.map((type) => `<li class='type'> ${type} </li>`).join('')}
+var pokemonLi = document.getElementById("pokemonLi");
+const loadMoreButton = document.getElementById("loadMoreButton");
+// const loadMLessButton = document.getElementById('loadLessButton')
+const limit = 12;
+let offset = 0;
+const maxRecords = 151;
 
 function convertPokemonToHtml(pokemon) {
   return `       
@@ -24,14 +29,69 @@ function convertPokemonToHtml(pokemon) {
         `;
 }
 function convertTypesToList(pokemon) {
-  return pokemon.types.map((type) => `<li class='type ${type} '> ${type} </li>`);
+  return pokemon.types.map(
+    (type) => `<li class='type ${type} '> ${type} </li>`
+  );
 }
 
-//${pokemon.types.map((type) => `<li class='type'> ${type} </li>`).join('')}
-var pokemonLi = document.getElementById("pokemonLi");
+function loadPokemonItens() {
+  pokeApi.getPokemons(offset, limit).then((pokemonList = []) => {
+    pokemonLi.innerHTML = pokemonList.map(convertPokemonToHtml).join("");
+  });
+}
+loadLessButton.disabled = true;
 
-pokeApi.getPokemons().then((pokemonList = []) => {
-  pokemonLi.innerHTML = pokemonList.map(convertPokemonToHtml).join("");
+loadPokemonItens(limit, offset);
+let qtdRecordNextPage = offset + limit;
+
+//next
+loadMoreButton.addEventListener("click", () => {
+  offset += limit;
+  qtdRecordNextPage = offset + limit
+  console.log(qtdRecordNextPage)
+  console.log(qtdRecordNextPage >= maxRecords )
+  if (offset > 0) {
+    loadLessButton.disabled = false;
+    if (qtdRecordNextPage >= maxRecords) {
+      const newLimit = maxRecords - offset;
+      loadPokemonItens(offset, newLimit);
+      loadMoreButton.disabled = true;
+    }
+  } 
+  
+  loadPokemonItens();
 });
 
-//
+//prev
+loadLessButton.addEventListener("click", () => {
+  offset -= limit;
+
+  if (offset === 0) {
+    loadLessButton.disabled = true;
+    loadMoreButton.disabled = false;
+    if (qtdRecordNextPage < maxRecords) {
+      const newLimit = maxRecords - offset;
+      loadPokemonItens(offset, newLimit);
+      loadMoreButton.disabled = false;
+    }
+  }
+
+  loadPokemonItens();
+});
+
+//max
+
+// loadMoreButton.addEventListener("click", () => {
+
+// });
+//max
+// const qtdRecordNextPage = offset + limit
+
+// if(qtdRecordNextPage >= maxRecords) {
+//   const newLimit = maxRecords - offset
+//   loadPokemonItens(offset, newLimit)
+//   loadMoreButton.disabled = true
+// }else {
+//   loadPokemonItens(offset, limit)
+
+// }

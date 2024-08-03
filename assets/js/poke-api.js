@@ -2,7 +2,7 @@ const pokeApi = {};
 //fetch para solicitar a lista em json dos detalhes de pokemon
 function convertPokeApiDetailToPokemon(pokeDetail) {
   const pokemon = new Pokemon();
-  pokemon.number = pokeDetail.order;
+  pokemon.number = pokeDetail.id;
   pokemon.photo = pokeDetail.sprites.other.dream_world.front_default;
   pokemon.name = pokeDetail.name;
   pokemon.types = pokeDetail.types.map((x) => x.type.name);
@@ -19,7 +19,7 @@ pokeApi.getPokemonDetail = (pokemon) => {
     .then(convertPokeApiDetailToPokemon);
 };
 
-pokeApi.getPokemons = (offset = 0, limit = 10) => {
+pokeApi.getPokemons = (offset = 0, limit = 12) => {
   const url = `https://pokeapi.co/api/v2/pokemon/?offset=${offset}&limit=${limit}`;
 
   //buscando a lista
@@ -39,3 +39,5 @@ pokeApi.getPokemons = (offset = 0, limit = 10) => {
       .then((pokemonDetails) => pokemonDetails)
   );
 };
+
+

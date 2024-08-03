@@ -4,7 +4,7 @@
 }
 
 body {
-    background-color: #f5f7f9;
+  background-color: #f5f7f9;
 }
 
 h1 {
@@ -17,22 +17,44 @@ h1 {
   max-width: 360px;
 }
 
-button {
-  all:unset;
-  margin: 4rem auto;
+.pagination {
   display: flex;
+  /* background-color: #f3d9e1; */
+  /* justify-content: center; */
+}
+
+button {
+  all: unset;
+  margin: 2rem auto;
+  text-align: center;
   padding: 1rem;
   width: 100%;
-  max-width: 20rem;
-  justify-content: center;
+  max-width: 3rem;
   font-weight: 600;
-  border-radius: 1rem;
+  border-radius: 2rem;
   color: #fff;
   background-color: #dc0a2d;
   border: 1px solid #ccc;
+  transition: all 200ms;
+}
+.next {
+
 }
 
-button:hover {
-  transition: all;
-  background-color: #df445e;
+.back{
+
 }
+button:disabled{
+  background-color: #aeaeae;
+  cursor: default;
+}
+button:hover:disabled {
+  max-width: 3rem;
+  background-color: #aeaeae;
+}
+button:hover {
+  transition: all 400ms;
+  background-color: #a53044;
+  max-width: 3.1rem;
+}
+
