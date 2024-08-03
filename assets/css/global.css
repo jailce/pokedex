@@ -38,13 +38,11 @@ button {
   transition: all 200ms;
 }
 .next {
-
 }
 
-.back{
-
+.back {
 }
-button:disabled{
+button:disabled {
   background-color: #aeaeae;
   cursor: default;
 }
@@ -57,4 +55,3 @@ button:hover {
   background-color: #a53044;
   max-width: 3.1rem;
 }
-

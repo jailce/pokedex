@@ -47,9 +47,9 @@ let qtdRecordNextPage = offset + limit;
 //next
 loadMoreButton.addEventListener("click", () => {
   offset += limit;
-  qtdRecordNextPage = offset + limit
-  console.log(qtdRecordNextPage)
-  console.log(qtdRecordNextPage >= maxRecords )
+  qtdRecordNextPage = offset + limit;
+  console.log(qtdRecordNextPage);
+  console.log(qtdRecordNextPage >= maxRecords);
   if (offset > 0) {
     loadLessButton.disabled = false;
     if (qtdRecordNextPage >= maxRecords) {
@@ -57,8 +57,8 @@ loadMoreButton.addEventListener("click", () => {
       loadPokemonItens(offset, newLimit);
       loadMoreButton.disabled = true;
     }
-  } 
-  
+  }
+
   loadPokemonItens();
 });
 
