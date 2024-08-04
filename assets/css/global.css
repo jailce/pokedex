@@ -56,3 +56,14 @@ button:hover {
   background-color: #a53044;
   max-width: 3.1rem;
 }
+
+
+footer{
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+}
+
+footer a{
+  padding-right: 0.5rem;
+}
