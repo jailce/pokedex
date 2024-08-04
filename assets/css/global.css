@@ -36,6 +36,7 @@ button {
   background-color: #dc0a2d;
   border: 1px solid #ccc;
   transition: all 200ms;
+  cursor: pointer;
 }
 .next {
 }
